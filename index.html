@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8c5d7">
+<meta name="description" content="A beautiful digital love book celebrating the story of Job and Dorcas.">
+<title>Our Little World | Job ❤️ Dorcas</title>
+
+<style>
+:root {
+  --pink: #d94f87;
+  --deep: #a92d62;
+  --light: #fff1f6;
+  --soft: #f9d5e3;
+  --text: #65384e;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: var(--light);
+  color: var(--text);
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#welcomeScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(145deg,#fff0f5,#f4b9d0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.welcome-content {
+  background: white;
+  width: 100%;
+  max-width: 430px;
+  padding: 35px 22px;
+  border-radius: 28px;
+  box-shadow: 0 12px 35px #d98ba966;
+}
+
+.welcome-heart {
+  font-size: 70px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.15); }
+}
+
+.welcome-content h1 {
+  color: var(--deep);
+  font-size: 28px;
+}
+
+.welcome-content h2 {
+  color: var(--pink);
+  font-size: 24px;
+}
+
+.welcome-content p {
+  line-height: 1.8;
+}
+
+.primary-btn {
+  background: var(--pink);
+  color: white;
+  border: none;
+  padding: 14px 23px;
+  border-radius: 30px;
+  margin: 10px 0;
+}
+
+.primary-btn:hover {
+  background: var(--deep);
+}
+
+header {
+  background: linear-gradient(135deg,#f7c3d6,#fce5ed);
+  text-align: center;
+  padding: 35px 15px;
+}
+
+header h1 {
+  color: var(--deep);
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header h2 {
+  color: var(--pink);
+  margin: 10px;
+}
+
+header p {
+  color: #914b6b;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  display: flex;
+  gap: 9px;
+  padding: 13px;
+  overflow-x: auto;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px #e7bfd0;
+}
+
+nav a {
+  color: var(--deep);
+  text-decoration: none;
+  border: 1px solid var(--soft);
+  border-radius: 22px;
+  padding: 9px 13px;
+  font-size: 13px;
+}
+
+nav a:hover {
+  background: var(--light);
+}
+
+main {
+  max-width: 700px;
+  margin: auto;
+  padding: 18px;
+}
+
+section {
+  background: white;
+  padding: 23px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px #eacbd7;
+  scroll-margin-top: 75px;
+}
+
+h2 {
+  color: var(--deep);
+}
+
+h3 {
+  color: var(--pink);
+}
+
+.section-heart {
+  text-align: center;
+  font-size: 30px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 9px 0;
+  border: 1px solid #eebdd0;
+  border-radius: 12px;
+  background: #fffafd;
+  color: var(--text);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button:disabled {
+  opacity: .6;
+}
+
+.message {
+  background: #fff0f5;
+  padding: 13px;
+  border-radius: 12px;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.memory-card {
+  background: #fff0f5;
+  border-radius: 13px;
+  padding: 7px;
+  min-width: 0;
+}
+
+.memory-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.memory-card button {
+  margin-top: 7px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.reason-item {
+  padding: 12px;
+  margin: 9px 0;
+  background: #fff0f5;
+  border-radius: 12px;
+  line-height: 1.5;
+}
+
+.promise {
+  background: #fff0f5;
+  padding: 13px;
+  border-radius: 12px;
+  margin: 10px 0;
+}
+
+.date-card {
+  padding: 13px;
+  background: #fff0f5;
+  margin: 10px 0;
+  border-radius: 12px;
+}
+
+footer {
+  text-align: center;
+  background: #f7c3d6;
+  padding: 30px 15px;
+  color: var(--deep);
+  margin-top: 30px;
+}
+
+.small-text {
+  font-size: 13px;
+  color: #9b6b80;
+}
+
+@media(max-width:380px) {
+  .memory-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME SCREEN -->
+<div id="welcomeScreen">
+  <div class="welcome-content">
+    <div class="welcome-heart">💗</div>
+    <h1>OUR LITTLE WORLD</h1>
+    <h2>JOB ❤️ DORCAS</h2>
+    <p>Every love story is beautiful, but ours is my favourite.</p>
+    <button class="primary-btn" onclick="openOurStory()">
+      Open Our Story 💌
+    </button>
+    <p class="small-text">A little book made with love.</p>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="section-heart">💕</div>
+  <h1>OUR LITTLE LOVE BOOK</h1>
+  <h2>JOB ❤️ DORCAS</h2>
+  <p>Two hearts. One beautiful story.</p>
+  <p>Our memories, our promises, our journey.</p>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#story">Our Story</a>
+  <a href="#letters">Love Letters</a>
+  <a href="#memories">Memories</a>
+  <a href="#reasons">100 Reasons</a>
+  <a href="#promises">Promises</a>
+  <a href="#dates">Special Dates</a>
+</nav>
+
+<main>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="section-heart">📖</div>
+  <h2>Our Story</h2>
+  <p>
+    Every beautiful story has a beginning.
+    This is where our journey begins.
+  </p>
+  <p>
+    Two people, two hearts, and a journey
+    we hope will be filled with happiness,
+    laughter, understanding and beautiful memories.
+  </p>
+  <p>
+    This little book is a reminder that every
+    moment we share can become a beautiful memory.
+  </p>
+  <h3>Job ❤️ Dorcas</h3>
+  <p>Our story is still being written...</p>
+</section>
+
+<!-- LOVE LETTERS -->
+<section id="letters">
+  <div class="section-heart">💌</div>
+  <h2>Our Love Letters</h2>
+  <p>Leave a sweet message for each other.</p>
+
+  <input id="sender" placeholder="Your name">
+  <textarea id="letter" placeholder="Write your love letter here..."></textarea>
+  <button class="primary-btn" onclick="saveLetter()">Save Letter ❤️</button>
+
+  <h3>Our Letters</h3>
+  <div id="savedLetters"></div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <div class="section-heart">📸</div>
+  <h2>Our Beautiful Memories</h2>
+  <p>Pictures that tell our story.</p>
+
+  <input type="file" id="photoInput" accept="image/*">
+  <button class="primary-btn" onclick="addPhoto()">Add Our Picture ❤️</button>
+
+  <div id="gallery" class="memory-grid"></div>
+</section>
+
+<!-- 100 REASONS -->
+<section id="reasons">
+  <div class="section-heart">🌹</div>
+  <h2>100 Reasons I Love You</h2>
+  <p>Little things that make someone special.</p>
+  <div id="loveReasons100"></div>
+
+  <h3>Add Your Own Reason</h3>
+  <input id="reasonInput" placeholder="Write your own reason...">
+  <button class="primary-btn" onclick="saveReason()">Add Reason 💗</button>
+  <div id="extraReasons"></div>
+</section>
+
+<!-- PROMISES -->
+<section id="promises">
+  <div class="section-heart">🤞</div>
+  <h2>Our Promises</h2>
+
+  <div class="promise">❤️ We promise to respect each other.</div>
+  <div class="promise">❤️ We promise to communicate honestly.</div>
+  <div class="promise">❤️ We promise to listen and understand.</div>
+  <div class="promise">❤️ We promise to support each other's dreams.</div>
+  <div class="promise">❤️ We promise to forgive and grow.</div>
+  <div class="promise">❤️ We promise to appreciate the little things.</div>
+  <div class="promise">❤️ We promise to keep building beautiful memories.</div>
+  <div class="promise">❤️ We promise to choose kindness every day.</div>
+
+  <p><b>Two hearts, one journey. 💕</b></p>
+</section>
+
+<!-- SPECIAL DATES -->
+<section id="dates">
+  <div class="section-heart">📅</div>
+  <h2>Our Special Dates</h2>
+  <p>Save dates that mean something to us.</p>
+
+  <input id="dateName" placeholder="Name of special occasion">
+  <input id="dateValue" type="date">
+  <button class="primary-btn" onclick="saveDate()">Save Special Date 💗</button>
+
+  <div id="savedDates"></div>
+</section>
+
+<!-- FINAL MESSAGE -->
+<section style="text-align:center;">
+  <div class="section-heart">💞</div>
+  <h2>A Message For You</h2>
+  <p>
+    No matter how our story unfolds,
+    may we always find reasons to smile,
+    reasons to grow and reasons to appreciate
+    the beautiful moments we share.
+  </p>
+  <h3>Forever grateful for this story. ❤️</h3>
+</section>
+
+</main>
+
+<footer>
+  <h2>JOB ❤️ DORCAS</h2>
+  <p>Our Little World</p>
+  <p>Made with love, just for us. 💗</p>
+  <p class="small-text">© 2026 Our Little Love Book</p>
+</footer>
+
+<script>
+
+// WELCOME SCREEN
+function openOurStory() {
+  document.getElementById("welcomeScreen").style.display = "none";
+  window.scrollTo(0,0);
+}
+
+// SAFE TEXT DISPLAY
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, function(char) {
+    return {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[char];
+  });
+}
+
+// LOVE LETTERS
+function saveLetter() {
+  const sender = document.getElementById("sender").value.trim();
+  const letter = document.getElementById("letter").value.trim();
+
+  if (!sender || !letter) {
+    alert("Please fill in both fields ❤️");
+    return;
+  }
+
+  const letters = JSON.parse(localStorage.getItem("loveLetters") || "[]");
+  letters.push({sender,letter});
+
+  localStorage.setItem("loveLetters",JSON.stringify(letters));
+
+  document.getElementById("sender").value = "";
+  document.getElementById("letter").value = "";
+
+  showLetters();
+}
+
+function showLetters() {
+  const letters = JSON.parse(localStorage.getItem("loveLetters") || "[]");
+  const container = document.getElementById("savedLetters");
+
+  container.innerHTML = letters.map(item =>
+    `<div class="message">
+      <b>${escapeHTML(item.sender)}</b>
+      <p>${escapeHTML(item.letter).replace(/\n/g,"<br>")}</p>
+    </div>`
+  ).join("");
+}
+
+// PHOTO MEMORIES
+function addPhoto() {
+  const input = document.getElementById("photoInput");
+  const file = input.files[0];
+
+  if (!file) {
+    alert("Choose a picture first ❤️");
+    return;
+  }
+
+  if (!file.type.startsWith("image/")) {
+    alert("Please select an image.");
+    return;
+  }
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("Please choose a picture smaller than 2MB.");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(event) {
+    const photos = JSON.parse(localStorage.getItem("ourPhotos") || "[]");
+
+    if (photos.length >= 20) {
+      alert("You have reached the 20 picture limit.");
+      return;
+    }
+
+    photos.push(event.target.result);
+
+    try {
+      localStorage.setItem("ourPhotos",JSON.stringify(photos));
+      showPhotos();
+      input.value = "";
+    } catch(error) {
+      alert("Storage is full. Try removing some pictures.");
+    }
+  };
+
+  reader.readAsDataURL(file);
+}
+
+function showPhotos() {
+  const photos = JSON.parse(localStorage.getItem("ourPhotos") || "[]");
+  const gallery = document.getElementById("gallery");
+
+  gallery.innerHTML = photos.map((photo,index) =>
+    `<div class="memory-card">
+      <img src="${photo}" alt="Our memory">
+      <button class="primary-btn" onclick="deletePhoto(${index})">Delete Picture</button>
+    </div>`
+  ).join("");
+}
+
+function deletePhoto(index) {
+  if (!confirm("Delete this picture?")) return;
+
+  const photos = JSON.parse(localStorage.getItem("ourPhotos") || "[]");
+  photos.splice(index,1);
+  localStorage.setItem("ourPhotos",JSON.stringify(photos));
+  showPhotos();
+}
+
+// FIRST 100 REASONS
+const reasonsToLove = [
+"You make me smile.",
+"Your beautiful personality.",
+"The way you laugh.",
+"Your kindness.",
+"Your beautiful heart.",
+"The way you make me feel.",
+"Your lovely smile.",
+"Your sense of humour.",
+"Your voice.",
+"Your presence makes me happy.",
+"You are special to me.",
+"You make ordinary days beautiful.",
+"Your honesty.",
+"Your courage.",
+"Your dreams.",
+"Your ambition.",
+"Your caring heart.",
+"The way you listen.",
+"Your little surprises.",
+"Your beautiful energy.",
+"Your patience.",
+"Your confidence.",
+"Your uniqueness.",
+"The way you talk.",
+"Your sweet nature.",
+"Your intelligence.",
+"Your strength.",
+"Your gentle heart.",
+"Your sense of style.",
+"Your positive spirit.",
+"Your encouragement.",
+"Your beautiful eyes.",
+"The way you understand me.",
+"Your loyalty.",
+"Your thoughtfulness.",
+"Your warmth.",
+"Your creativity.",
+"Your determination.",
+"Your little jokes.",
+"Your happiness.",
+"You inspire me.",
+"You bring me peace.",
+"You make me feel appreciated.",
+"You make me laugh.",
+"You are my favourite person.",
+"Your dreams matter to me.",
+"Your support.",
+"Your compassion.",
+"Your beautiful soul.",
+"Simply because you are Dorcas.",
+"Your smile brightens my day.",
+"The way you care.",
+"Your beautiful mind.",
+"Your courage to try.",
+"Your sweet messages.",
+"Your lovely personality.",
+"The way you make time.",
+"Your honesty with me.",
+"Your beautiful spirit.",
+"Your gentle words.",
+"The way you encourage me.",
+"Your laughter is special.",
+"Your sense of adventure.",
+"Your kindness to others.",
+"Your unique character.",
+"The way you express yourself.",
+"Your little habits.",
+"Your big dreams.",
+"Your determination to grow.",
+"Your ability to make me smile.",
+"Your wonderful heart.",
+"Your sense of humour.",
+"Your thoughtful nature.",
+"The way you make memories.",
+"Your beautiful presence.",
+"Your confidence in yourself.",
+"Your caring attitude.",
+"Your patience with me.",
+"Your willingness to learn.",
+"Your kindness in difficult moments.",
+"The way you brighten a room.",
+"Your sweet personality.",
+"Your creativity.",
+"Your beautiful laughter.",
+"Your honesty and openness.",
+"Your strength through challenges.",
+"Your gentle heart.",
+"The way you make me feel valued.",
+"Your hopeful spirit.",
+"Your beautiful dreams.",
+"Your little acts of kindness.",
+"The way you make life interesting.",
+"Your smile in happy moments.",
+"Your support for my goals.",
+"The joy you bring.",
+"Your uniqueness in this world.",
+"The memories we are creating.",
+"The chance to know you.",
+"Because you are you."
+];
+
+function show100Reasons() {
+  document.getElementById("loveReasons100").innerHTML =
+    reasonsToLove.map((reason,index) =>
+      `<div class="reason-item">❤️ ${index+1}. ${escapeHTML(reason)}</div>`
+    ).join("");
+}
+
+// EXTRA REASONS
+function saveReason() {
+  const input = document.getElementById("reasonInput");
+  const reason = input.value.trim();
+
+  if (!reason) {
+    alert("Write a reason first ❤️");
+    return;
+  }
+
+  const reasons = JSON.parse(localStorage.getItem("extraReasons") || "[]");
+  reasons.push(reason);
+
+  localStorage.setItem("extraReasons",JSON.stringify(reasons));
+  input.value = "";
+  showExtraReasons();
+}
+
+function showExtraReasons() {
+  const reasons = JSON.parse(localStorage.getItem("extraReasons") || "[]");
+
+  document.getElementById("extraReasons").innerHTML =
+    reasons.map(reason =>
+      `<div class="reason-item">💗 ${escapeHTML(reason)}</div>`
+    ).join("");
+}
+
+// SPECIAL DATES
+function saveDate() {
+  const name = document.getElementById("dateName").value.trim();
+  const date = document.getElementById("dateValue").value;
+
+  if (!name || !date) {
+    alert("Enter an occasion and date.");
+    return;
+  }
+
+  const dates = JSON.parse(localStorage.getItem("specialDates") || "[]");
+  dates.push({name,date});
+
+  localStorage.setItem("specialDates",JSON.stringify(dates));
+
+  document.getElementById("dateName").value = "";
+  document.getElementById("dateValue").value = "";
+
+  showDates();
+}
+
+function showDates() {
+  const dates = JSON.parse(localStorage.getItem("specialDates") || "[]");
+
+  document.getElementById("savedDates").innerHTML =
+    dates.map((item,index) =>
+      `<div class="date-card">
+        <b>${escapeHTML(item.name)}</b>
+        <p>${escapeHTML(item.date)}</p>
+        <button class="primary-btn" onclick="deleteDate(${index})">Delete</button>
+      </div>`
+    ).join("");
+}
+
+function deleteDate(index) {
+  if (!confirm("Delete this date?")) return;
+
+  const dates = JSON.parse(localStorage.getItem("specialDates") || "[]");
+  dates.splice(index,1);
+  localStorage.setItem("specialDates",JSON.stringify(dates));
+  showDates();
+}
+
+// LOAD SAVED CONTENT
+showLetters();
+showPhotos();
+show100Reasons();
+showExtraReasons();
+showDates();
+
+</script>
+
+</body>
+</html>
