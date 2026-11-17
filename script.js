@@ -1,4 +1,4 @@
-
+console.log("OUR LOVE BOOK JAVASCRIPT LOADED");
 document.addEventListener("DOMContentLoaded", function () {
 
   // FIREBASE CONFIGURATION
